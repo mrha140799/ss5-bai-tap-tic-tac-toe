@@ -17,7 +17,6 @@
     let idText = document.getElementById("idText");
     let htmlStr = "";
     let x = '.';
-    let dem = 0;
     let chieuDai = parseInt(prompt("mời bạn nhập vào chiều dài của bàn cờ"));
     let arr = new Array(chieuDai);
     for (let i = 0; i < chieuDai; i++) {
@@ -44,10 +43,10 @@
             htmlStr += "</br>";
         }
         idText.innerHTML = htmlStr;
-        DuyetNgang(arr , positionX , positionY);
-        DuyetDoc(arr , positionX , positionY);
-        DuyetCheoSac(arr , positionX , positionY);
-        DuyetCheoHuyen(arr , positionX , positionY);
+        duyetNgang(arr , positionX , positionY);
+        duyetDoc(arr , positionX , positionY);
+        duyetCheoSac(arr , positionX , positionY);
+        duyetCheoHuyen(arr , positionX , positionY);
 
     }
 
@@ -63,14 +62,14 @@
             htmlStr += "</br>";
         }
         idText.innerHTML = htmlStr;
-        DuyetNgang(arr , positionX , positionY);
-        DuyetDoc(arr , positionX , positionY);
-        DuyetCheoSac(arr , positionX , positionY);
-        DuyetCheoHuyen(arr , positionX , positionY);
+        duyetNgang(arr , positionX , positionY);
+        duyetDoc(arr , positionX , positionY);
+        duyetCheoSac(arr , positionX , positionY);
+        duyetCheoHuyen(arr , positionX , positionY);
     }
 
 
-    function DuyetNgang(arr ,positionX,positionY) {
+    function duyetNgang(arr ,positionX,positionY) {
         if (positionX!= 0 && arr[positionY][positionX] == arr[positionY][positionX-1]){
             DuyetNgang(arr , positionX -1 , positionY);
         } else {
@@ -88,7 +87,7 @@
             }
         }
     }
-    function DuyetDoc(arr ,positionX,positionY) {
+    function duyetDoc(arr ,positionX,positionY) {
         if (positionY!= 0 && arr[positionY][positionX] == arr[positionY-1][positionX]){
             DuyetDoc(arr , positionX , positionY-1);
         } else {
@@ -106,9 +105,8 @@
             }
         }
     }
-    function DuyetCheoSac(arr ,positionX,positionY) {
+    function duyetCheoSac(arr ,positionX,positionY) {
         if ((positionX != arr.length-1 || positionY != 0) && (arr[positionY][positionX]==arr[positionY-1][positionX+1])) {
-            console.log("x:" +positionX + " y:" +positionY);
             DuyetCheoSac(arr , positionX+1 , positionY-1);
         }else {
             let dem = 0;
@@ -117,7 +115,6 @@
             for (let i = positionX ; i >=0 ; i--) {
                 if (arr[y][i] == tg) {
                     dem++;
-                    console.log(dem);
                     y++;
                 }else {
                     break;
@@ -128,9 +125,8 @@
             }
         }
     }
-    function DuyetCheoHuyen(arr ,positionX,positionY) {
+    function duyetCheoHuyen(arr ,positionX,positionY) {
         if ((positionX !=0 || positionY != 0) && (arr[positionY][positionX]==arr[positionY-1][positionX-1])) {
-            console.log("x:" +positionX + " y:" +positionY);
             DuyetCheoHuyen(arr , positionX-1 , positionY-1);
         }else {
             let dem = 0;
@@ -139,7 +135,6 @@
             for (let i = positionX ; i <arr.length; i++) {
                 if (arr[y][i] == tg) {
                     dem++;
-                    console.log(dem);
                     y++;
                 }else {
                     break;
